@@ -5,11 +5,11 @@ import (
 	"fmt"
 )
 
-func add() {
-	return 100
-}
+// func add() {
+// 	return 100
+// }
 
 func main() {
-	fmt.Println(add())
+	// fmt.Println(add())
 	fmt.Println("Hello JJ!")
 }
