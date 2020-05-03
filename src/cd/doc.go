@@ -3,12 +3,12 @@
 /*
 cd document
 */
-package main
+package mydoc
 
 import (
 	"fmt"
 )
 
-func main() {
+func TestState() {
 	fmt.Println("This is doc")
 }
