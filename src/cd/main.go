@@ -9,6 +9,7 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // const use
@@ -45,6 +46,7 @@ func main() {
 	// fm.Println(VIOLET)
 	fetchEnv()
 	defVar()
+	testTime()
 }
 
 // 加法
@@ -175,4 +177,24 @@ func testString() {
 	fm.Printf("The news is %s \n", news)
 
 	fm.Println("--------- testString end --------- ")
+}
+
+func testTime() {
+	fm.Println("--------- testTime start --------- ")
+	t := time.Now()
+	year := t.Year()
+	month := t.Month()
+	day := t.Day()
+	hour := t.Hour()
+	min := t.Minute()
+	sec := t.Second()
+	// var current string = year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec
+	fm.Println(t)
+	// fm.Printf("current time is : %s \n", current)
+	// if not be str convert
+	fm.Printf("current time is : %4d-%02d-%02d %d:%d:%d \n",
+		year, month, day, hour, min, sec)
+
+	// end
+	fm.Println("--------- testTime end --------- ")
 }
