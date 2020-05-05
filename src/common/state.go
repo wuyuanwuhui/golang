@@ -47,8 +47,11 @@ func TestFunc() {
 }
 
 // 多值返回函数
-func rtMultiValues(a int, b int) (sum int, ok bool) {
-	return a + b, true
+func rtMultiValues(a int, b int) (sum int, ok bool) { // (int, bool)
+	//return a + b, true
+	sum = a + b
+	ok = true
+	return
 }
 
 func TestSwitch() {
