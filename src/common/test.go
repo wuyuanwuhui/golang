@@ -179,6 +179,10 @@ func DefVar() {
 	// d = common.IntFromFloat64(d)
 	// fmt.Println(d)
 	// PrintNumbers()
+	var ab byte = 'c'
+	d := int(ab)
+	fmt.Printf("%d\n", ab) // print 99
+	fmt.Printf("%d\n", d)
 }
 
 func PrintNumbers() {

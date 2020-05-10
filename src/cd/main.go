@@ -86,4 +86,5 @@ func main() {
 	// var map1 map[keytype]valuetype
 	// common.TestDefineMap()
 	common.TestMapSlice()
+
 }
