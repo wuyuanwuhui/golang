@@ -85,6 +85,8 @@ func main() {
 	// test map : key => value 类似PHP里面的非整型索引关联数组
 	// var map1 map[keytype]valuetype
 	// common.TestDefineMap()
-	common.TestMapSlice()
+	// common.TestMapSlice()
 
+	// test regexp
+	common.TestRegExp()
 }
