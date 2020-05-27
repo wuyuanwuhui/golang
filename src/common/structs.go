@@ -30,6 +30,15 @@ func CreatePerson() *person {
 	return per
 }
 
+// 导出字段
+func (p *person) Age() int {
+	return p.age
+}
+
+func (p *person) SetAget(age int) {
+	p.age = age
+}
+
 func TestStructDefine() {
 	fmt.Println("This is struct")
 	var per1 person
