@@ -9,6 +9,7 @@ import (
 	"fmt"
 )
 
+// 接口里也不能包含变量
 type Shaper interface {
 	Area() float32
 	// AB() int // 如果类型没有实现此方法，则类型编译出错
@@ -39,6 +40,12 @@ func TestInterface() {
 	areaIntf = sq
 	fmt.Printf("areaIntf area is : %v \n", areaIntf.Area())
 
+	if t, ok := areaIntf.(*Square); ok {
+		fmt.Printf("Yes areaIntf is instance of Square: %T \n", t)
+	} else {
+		fmt.Printf("No areaIntf is not instance of Square: %T \n", t)
+	}
+
 	// 不同的接收者
 	q := &Square{5}
 	r := Rectangle{5, 6}
@@ -56,6 +63,22 @@ func TestInterface() {
 	showValue(o)
 	o = car{"Bench", "Moe100", 1226}
 	showValue(o)
+
+	// 非实现接口的一般类型方法
+	bike := &bike{100}
+	fmt.Println("The bike price: ", bike.Area())
+}
+
+type bike struct {
+	price float32
+}
+
+func (b *bike) Area() float32 {
+	return b.price
+}
+
+type valueable interface {
+	getValue() float32
 }
 
 type stockPosition struct {
@@ -78,10 +101,34 @@ func (c car) getValue() float32 {
 	return c.price
 }
 
-type valueable interface {
-	getValue() float32
-}
-
 func showValue(asset valueable) {
 	fmt.Printf("Value of the asset is %f\n", asset.getValue())
 }
+
+// 接口嵌套接口
+type MySql interface {
+	getConn() string
+	getId() string
+}
+
+type NoSql interface {
+	doc() string
+}
+
+type Db interface {
+	MySql
+	NoSql
+}
+
+// 类型断言：如何检测和转换接口变量的类型
+// if v, ok := varI.(T); ok
+
+// Go 语言规范定义了接口方法集的调用规则：
+// 类型 *T 的可调用方法集包含接受者为 *T 或 T 的所有方法集
+// 类型 T 的可调用方法集包含接受者为 T 的所有方法
+// 类型 T 的可调用方法集不包含接受者为 *T 的方法
+
+// 空接口或者最小接口 不包含任何方法，它对实现不做任何要求
+type Any interface{}
+
+// 可以给一个空接口类型的变量 var val interface {} 赋任何类型的值。
